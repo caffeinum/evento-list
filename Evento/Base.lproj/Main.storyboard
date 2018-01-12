@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,170 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Evento" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyA-pl-rzA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="zES-8D-Ave">
+                                        <rect key="frame" x="0.0" y="0.0" width="667" height="667"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zES-8D-Ave" secondAttribute="height" multiplier="1:1" id="nPt-7T-ZTr"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zES-8D-Ave" firstAttribute="leading" secondItem="YyA-pl-rzA" secondAttribute="leading" id="2Tr-l3-R8J"/>
+                                    <constraint firstItem="zES-8D-Ave" firstAttribute="top" secondItem="YyA-pl-rzA" secondAttribute="top" id="3LL-LC-ZAe"/>
+                                    <constraint firstAttribute="bottom" secondItem="zES-8D-Ave" secondAttribute="bottom" id="6ya-5l-s86"/>
+                                    <constraint firstItem="zES-8D-Ave" firstAttribute="centerY" secondItem="YyA-pl-rzA" secondAttribute="centerY" id="gtB-aU-pMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="zES-8D-Ave" secondAttribute="trailing" id="sKf-9s-e7l"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ei-e8-xqd">
+                                <rect key="frame" x="55" y="70" width="265" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-vr-H4F">
+                                        <rect key="frame" x="86" y="10" width="93" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="List Events">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="0Fu-2D-vQG" kind="show" id="8yn-Ml-QWG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWR-yf-U7z">
+                                        <rect key="frame" x="0.0" y="-40" width="265" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <state key="normal" title="Login Button" image="facebook-login"/>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YyA-pl-rzA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0RY-b4-iME"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Ei-e8-xqd" secondAttribute="trailing" constant="55" id="Fkv-M0-DtP"/>
+                            <constraint firstItem="5Ei-e8-xqd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="ICG-Wc-Dyg"/>
+                            <constraint firstItem="5Ei-e8-xqd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QIe-bc-fDW"/>
+                            <constraint firstItem="5Ei-e8-xqd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="YWV-I0-WXe"/>
+                            <constraint firstAttribute="trailing" secondItem="YyA-pl-rzA" secondAttribute="trailing" id="aHL-l2-SA4"/>
+                            <constraint firstItem="YyA-pl-rzA" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="blA-ce-fnG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Ei-e8-xqd" secondAttribute="bottom" constant="547" id="o7I-So-yDF"/>
+                            <constraint firstItem="YyA-pl-rzA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rJt-Qn-Kxt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="listEventsButton" destination="Dld-vr-H4F" id="tlt-Fq-LdH"/>
+                        <outlet property="loginButton" destination="TWR-yf-U7z" id="YkA-Do-UzN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="276" y="106.59670164917542"/>
+        </scene>
+        <!--List Events View Controller-->
+        <scene sceneID="WFn-Tc-hcc">
+            <objects>
+                <viewController id="0Fu-2D-vQG" customClass="ListEventsViewController" customModule="Evento" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qEc-Fo-kxy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k9D-1d-pLM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" id="yau-0W-N8T" customClass="EventTableViewCell" customModule="Evento" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yau-0W-N8T" id="Kpr-mq-vWx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="ld1-YN-0bL">
+                                                    <rect key="frame" x="10" y="10" width="99.5" height="99.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="ld1-YN-0bL" secondAttribute="height" id="l6u-mr-UJM"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Big Dance Party in Moscow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kal-Yh-5j2">
+                                                    <rect key="frame" x="117" y="33" width="243" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#rave #party  #mega #msk #moscow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyk-DI-A7P">
+                                                    <rect key="frame" x="117" y="49" width="243" height="61"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-1Z-053">
+                                                    <rect key="frame" x="117" y="7" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                    <state key="normal" title="⊸ "/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="⊸ Gazgolder Club, Moscow, Russia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-GT-Zdd">
+                                                    <rect key="frame" x="117" y="89" width="233" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday 23 Jan 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6h-a1-me0">
+                                                    <rect key="frame" x="163" y="12" width="202" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ld1-YN-0bL" secondAttribute="bottom" constant="10" id="BWd-5J-4oH"/>
+                                                <constraint firstItem="ld1-YN-0bL" firstAttribute="top" secondItem="Kpr-mq-vWx" secondAttribute="top" constant="10" id="WlC-An-Kem"/>
+                                                <constraint firstItem="ld1-YN-0bL" firstAttribute="leading" secondItem="Kpr-mq-vWx" secondAttribute="leading" constant="10" id="gC7-SC-efk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="l6h-a1-me0" id="nrr-6W-AyK"/>
+                                            <outlet property="eventText" destination="Eyk-DI-A7P" id="Ecp-US-wUQ"/>
+                                            <outlet property="locationLabel" destination="G8k-GT-Zdd" id="Cdu-c2-taD"/>
+                                            <outlet property="picture" destination="ld1-YN-0bL" id="6j1-xA-fx5"/>
+                                            <outlet property="pinButton" destination="dmj-1Z-053" id="tU5-jd-NWG"/>
+                                            <outlet property="title" destination="kal-Yh-5j2" id="0y1-02-gB3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="c0s-Ip-JWQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="k9D-1d-pLM" id="ROM-5r-MTd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlI-HO-Meq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="106.59670164917542"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebook-login" width="480" height="230"/>
+        <image name="iTunesArtwork" width="512" height="512"/>
+    </resources>
 </document>
