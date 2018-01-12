@@ -14,34 +14,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var listEventsButton: UIButton!
     
+    @IBOutlet weak var listEventsView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupLoginButton()
-       
-        
+        setupListEventsView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         checkLogin()
-    
-        
-        
-        let token = AccessToken.init(authenticationToken: "EAACEdEose0cBALHlPgGGxH1LQvrXAxU8RBXznc6bTcZBH9wO7Pmn4Lu5usbMeIUIOQ5VarhBlyeJa8F2cN4bZBIZAcf2JfXfK2gR3sOobUPw9UYlvIAsmh9JOUEgLiz9FPpDtSpOGeV7GaWOTOlev00H5fMAwp86phkU7W1cZBh6h8tCm587W6iqc4Kliz4ZCRvSeoXgiqQZDZD")
-        
-//        AccessToken.current = token
-        AccessToken.refreshCurrentToken { (token, error) in
-            if let accessToken = token {
-                let userID = accessToken.userId
-                
-                print("Logged in! Id:" + (userID ?? ""))
-                self.loginButton.isHidden = true
-            } else {
-                print("Not logged in.")
-                self.loginButton.isHidden = false
-            }
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,19 +33,34 @@ class ViewController: UIViewController {
 
     func checkLogin() {
         if let accessToken = AccessToken.current {
-            let userID = accessToken.userId
-            
-            print("Logged in! Id:" + (userID ?? ""))
-            self.loginButton.isHidden = true
-        } else {
-            print("Not logged in.")
-            self.loginButton.isHidden = false
+            return loginSuccessful(token: accessToken)
         }
+        
+        AccessToken.refreshCurrentToken {
+            token, error in
+            if error == nil, let token = token {
+                self.loginSuccessful(token: token)
+            }
+        }
+        
     }
+    func loginSuccessful(token: AccessToken) {
+        let userID = token.userId
+        
+        print("Logged in! Id:" + (userID ?? ""))
+        loginButton.isHidden = true
+        listEventsView.isHidden = false
+        listEventsButton.isHidden = false
+    }
+    
     func setupLoginButton() {
         loginButton.setTitle("Login to Facebook", for: .normal)
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
-        
+    }
+    
+    func setupListEventsView() {
+        listEventsView.isHidden = true
+        listEventsButton.isHidden = true
     }
     
     @objc func loginButtonClicked() {

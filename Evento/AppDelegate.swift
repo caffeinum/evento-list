@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import UserNotifications
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

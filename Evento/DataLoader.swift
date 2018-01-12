@@ -27,7 +27,6 @@ struct User: JSONDataModel {
         let json = JSON(rawResponse ?? "")
         
         self.init(json: json)
-        
     }
     
     init(json: JSON) {
@@ -41,11 +40,12 @@ struct User: JSONDataModel {
 struct Event: JSONDataModel {
     var id: Int
     var name: String
-    var location: String
-    var linkAddress: String {
-        return "https://www.facebook.com/events/\(id)"
+    var location: String {
+        return getLocation()
     }
+    var place: JSON
     var pinned = false
+    
     var picture: URL?
     var pictureCached: Future<UIImage, NSError>?
     var pictureParsed: UIImage? {
@@ -54,6 +54,10 @@ struct Event: JSONDataModel {
     
     var date: Date
     var text: String
+    
+    var linkAddress: String {
+        return "https://www.facebook.com/events/\(id)"
+    }
     
     var isAtThisWeek: Bool {
         return date > Date(timeIntervalSinceNow: -24*60*60*7)
@@ -85,9 +89,7 @@ struct Event: JSONDataModel {
         text = json["description"].stringValue
         picture = json["cover"]["source"].url
         
-        let loc = json["place"]["location"]
-        location =
-        "\(json["place"]["name"].stringValue), \(loc["city"].stringValue), \(loc["country"].stringValue)"
+        place = json["place"]
         
         date = Event.dateParser.date(from: json["start_time"].stringValue) ?? Date(timeIntervalSinceNow: 0)
         
@@ -100,6 +102,11 @@ struct Event: JSONDataModel {
         } else {
             return ""
         }
+    }
+    
+    func getLocation() -> String {
+        let loc = place["location"]
+        return "\(place["name"].stringValue), \(loc["city"].stringValue), \(loc["country"].stringValue)"
     }
     
     func getDateString() -> String {
