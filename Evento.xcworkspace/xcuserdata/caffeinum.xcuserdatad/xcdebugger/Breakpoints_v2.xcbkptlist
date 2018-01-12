@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Evento/DataLoader.swift"
-            timestampString = "537454567.1173331"
+            timestampString = "537459707.970176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Evento/ListEventsViewController.swift"
-            timestampString = "537454567.117466"
+            timestampString = "537459707.970283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "pinEvent(sender:)"
             landmarkType = "7">
          </BreakpointContent>

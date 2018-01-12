@@ -149,11 +149,10 @@ struct Event: JSONDataModel {
 }
 
 protocol SocialConnection {
-    func loadFriends() -> Future<[User], NSError>
     func loadEvents() -> Future<[Event], NSError>
 }
 
-extension GraphRequestConnection: SocialConnection {
+class GraphConnector: SocialConnection {
     
     struct FBRequest<T: JSONDataModel>: GraphRequestProtocol {
         struct Response: GraphResponseProtocol {
@@ -183,9 +182,11 @@ extension GraphRequestConnection: SocialConnection {
     
     func load<T: JSONDataModel>(parameters: [String : Any]? = nil, dataKey: String) -> Future<[T], NSError> {
         
+        let connection = GraphRequestConnection();
+        
         let p = Promise<[T], NSError>()
         
-        self.add( FBRequest<T>( parameters: parameters ) ) { response, result in
+        connection.add( FBRequest<T>( parameters: parameters ) ) { response, result in
             switch result {
             case .success(let response):
                 
@@ -198,21 +199,21 @@ extension GraphRequestConnection: SocialConnection {
                 print("Custom Graph Request Failed: \(error)")
             }
         }
-        self.start()
+        connection.start()
         
         return p.future;
     }
 
 
     func loadFriends() -> Future<[User], NSError> {
-        return self.load(parameters: ["fields":"friends"], dataKey: "friends")
+        return load(parameters: ["fields":"friends"], dataKey: "friends")
     }
     
     func loadEvents() -> Future<[Event], NSError> {
        
         let params = ["fields": "events{category,description,owner,cover,start_time,place,name}"]
         
-        return self.load(parameters: params, dataKey: "events")
+        return load(parameters: params, dataKey: "events")
             .map{ events in
                 events
                     .sorted { $0.date > $1.date }

@@ -17,8 +17,9 @@ class ListEventsViewController: UIViewController {
     
     
     var loadingFuture: Future<[Event], NSError>? = nil
+    var _connection: SocialConnection! = GraphConnector()
     func getConnection() -> SocialConnection {
-        return GraphRequestConnection() as SocialConnection
+        return _connection as SocialConnection
     }
    
     var events: [Event] = [] {
@@ -40,8 +41,6 @@ class ListEventsViewController: UIViewController {
             
             return eventCopy
         }
-        
-        self.tableView.reloadData()
     }
     
     var normalEvents: [Event] = []
@@ -222,6 +221,7 @@ extension ListEventsViewController: UITableViewDataSource {
             print(events)
             
             self?.setData(events: events)
+            self?.tableView?.reloadData()
         }
         events.onFailure { (error) in
             print("error loading events: \(error)")
