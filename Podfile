@@ -12,18 +12,19 @@ target 'Evento' do
     pod 'FacebookLogin'
     pod 'FacebookShare'
 
-    target 'EventoTests' do
-        inherit! :search_paths
-        
+    def testing_pods
         pod 'Quick'
         pod 'Nimble'
     end
 
+    target 'EventoTests' do
+        inherit! :search_paths
+        testing_pods
+    end
+
     target 'EventoUITests' do
         inherit! :search_paths
-        
-        pod 'Quick'
-        pod 'Nimble'
+        testing_pods
     end
 
 end
